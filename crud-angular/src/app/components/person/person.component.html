@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card body">
+        <form #personForm="ngForm" (ngSubmit)="addPerson(personForm)">
+          <input
+            type="hidden"
+            name="_id"
+            [(ngModel)]="personService.personSelected._id"
+          />
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Name"
+              name="name"
+              [(ngModel)]="personService.personSelected.name"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Cedula"
+              name="cedula"
+              [(ngModel)]="personService.personSelected.cedula"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Profesion"
+              name="profession"
+              [(ngModel)]="personService.personSelected.profession"
+            />
+          </div>
+
+          <button
+            class="btn btn-secondary"
+            style="margin-right: 2px"
+            (click)="resetForm(personForm)"
+          >
+            Limpiar
+          </button>
+          <button class="btn btn-primary">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Cedula</th>
+          <th>Profession</th>
+          <th>Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of personService.people">
+          <td>
+            {{ person.name }}
+          </td>
+          <td>
+            {{ person.cedula }}
+          </td>
+          <td>
+            {{ person.profession }}
+          </td>
+          <td>
+            <button
+              class="btn btn-secondary btn-sm"
+              (click)="editPerson(person)"
+            >
+              <i class="material-icons">edit</i>
+            </button>
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="deletePerson(person._id)"
+            >
+              <i class="material-icons">delete</i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
