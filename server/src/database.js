@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const URI =
-  "mongodb+srv://JPK:92CzKSlrS80a@cluster0.1brfh.mongodb.net/angular?retryWrites=true&w=majority";
+  "";
 
 mongoose
   .connect(URI, {
